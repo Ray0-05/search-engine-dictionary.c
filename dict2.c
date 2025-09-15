@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
     while ((query = getQuery(stdin)) != NULL) {
         struct queryResult *r = ptDictLookup(dict, query);
         /* Stage string passed to printing: "2" */
-        printQueryResult(r, headers, stdout, output_file, PATRICIA_STAGE);
+        printQueryResult(r, headers, stdout, output_file);
         freeQueryResult(r);
         free(query);
     }

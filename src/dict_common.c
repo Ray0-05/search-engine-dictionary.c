@@ -83,33 +83,23 @@ void printField(FILE *f, struct data *record, int fieldIndex) {
 
 /* Print full query result (general, reused across dict types) */
 void printQueryResult(struct queryResult *r, char **headers, FILE *summaryFile,
-                      FILE *outputFile, char *stage) {
-    if (strcmp(stage, LOOKUPSTAGE) == 0) {
-        if (r->numRecords == 0) {
-            fprintf(summaryFile, "%s --> %s\n", r->searchString, NOTFOUND);
-        } else {
-            fprintf(summaryFile,
-                    "%s --> %d records found - comparisons: b%d n%d s%d\n",
-                    r->searchString, r->numRecords,
-                    r->bitCount, r->nodeCount, r->stringCount);
-        }
-    } else if (strcmp(stage, BINARYOUTPUTSTAGE) == 0) {
-        if (r->numRecords == 0) {
-            fprintf(summaryFile, "%s --> %s\n", r->searchString, NOTFOUND);
-        } else {
-            fprintf(summaryFile, "%s (", r->searchString);
-            for (int i = 0; i < (strlen(r->searchString) + 1) * BITS_PER_BYTE; i++) {
-                if (i > 0 && (i % BITS_PER_BYTE == 0)) fprintf(summaryFile, " ");
-                fprintf(summaryFile, "%d", getBit(r->searchString, i));
-            }
-            fprintf(summaryFile,
-                    ") --> %d records found - comparisons: b%d n%d s%d\n",
-                    r->numRecords, r->bitCount, r->nodeCount, r->stringCount);
-        }
+                      FILE *outputFile) {
+
+    if (r->numRecords == 0) {
+        fprintf(summaryFile,
+                "%s --> %s - comparisons: b%d n%d s%d\n",
+                r->searchString, NOTFOUND,
+                r->bitCount, r->nodeCount, r->stringCount);
+        fprintf(outputFile, "%s\n", r->searchString);
+        fprintf(outputFile, "--> %s\n", NOTFOUND);
+        return;
     } else {
-        fprintf(stderr, "Wrong stage to print the query result, exiting gracefully");
-        exit(EXIT_FAILURE);
-    }
+        fprintf(summaryFile,
+                "%s --> %d records found - comparisons: b%d n%d s%d\n",
+                r->searchString, r->numRecords,
+                r->bitCount, r->nodeCount, r->stringCount);
+        }
+
 
     /* Print details to output file */
     fprintf(outputFile, "%s\n", r->searchString);

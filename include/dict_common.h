@@ -7,8 +7,6 @@
 /* --------------------- Constants --------------------- */
 
 #define NUM_FIELDS 35
-#define LOOKUPSTAGE "1"
-#define BINARYOUTPUTSTAGE "2"
 
 /* --------------------- Forward Declarations --------------------- */
 
@@ -43,6 +41,6 @@ void printField(FILE *f, struct data *record, int fieldIndex);
 
 /* Print a query result (summary + details) */
 void printQueryResult(struct queryResult *r, char ** headers, FILE *summaryFile,
-                      FILE *outputFile, char *stage);
+                      FILE *outputFile);
 
 #endif

@@ -1,0 +1,2 @@
+18 P --> NOTFOUND - comparisons: b40 n2 s2
+783 S --> NOTFOUND - comparisons: b48 n2 s2

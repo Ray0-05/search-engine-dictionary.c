@@ -65,7 +65,7 @@ int main (int argc, char *argv[]){
         /* search for the target in dictionary, 
         and print out results of search */
         struct queryResult *results = llDictLookup(dict, query);
-        printQueryResult(results, field_headers, stdout, output_file, argv[STAGE_INDEX]);
+        printQueryResult(results, field_headers, stdout, output_file);
         freeQueryResult(results);
     }
 

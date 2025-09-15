@@ -1,0 +1,22 @@
+-------------------------The below is for testing exact matches ----------------------------------------------------
+
+./dict2 2 tests/dataset_1.csv output.txt < tests/test1.in > output.stdout.out
+
+./dict2 2 tests/dataset_2.csv output.txt < tests/test2.in > output.stdout.out
+
+./dict2 2 tests/dataset_22.csv output.txt < tests/test22.in > output.stdout.out
+
+./dict2 2 tests/dataset_1067.csv output.txt < tests/test1067.in > output.stdout.out
+
+valgrind --track-origins=yes --leak-check=full ./dict2 2 tests/dataset_1067.csv output.out < tests/test1067.in > output.stdout.out
+---------------------------The below is for testing non-exact matches-------------------------------------------------
+./dict2 2 tests/dataset_1.csv output.txt < tests/testpart1.in > output.stdout.out
+
+./dict2 2 tests/dataset_2.csv output.txt < tests/testpart2.in > output.stdout.out
+
+./dict2 2 tests/dataset_22.csv output.txt < tests/testpart22.in > output.stdout.out
+
+./dict2 2 tests/dataset_1067.csv output.txt < tests/testpart1067.in > output.stdout.out
+
+# Testing with Valgrind 
+valgrind --track-origins=yes --leak-check=full ./dict2 2 tests/dataset_1067.csv output.out < tests/testpart1067.in > output.stdout.out

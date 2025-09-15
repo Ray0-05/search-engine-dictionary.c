@@ -15,7 +15,7 @@ void ptDictInsert(struct ptDict *dict, struct csvRecord *rec);
 /* Lookup: exact match or “closest” (mismatch node + edit distance).
    Fills comparisons (bitCount/nodeCount/stringCount) inside queryResult.
 */
-struct queryResult *ptDictLookup(struct ptDict *dict, const char *query);
+struct queryResult *ptDictLookup(struct ptDict *dict, char *query);
 
 /* Free everything in the dictt. */
 void ptDictFree(struct ptDict *dict);

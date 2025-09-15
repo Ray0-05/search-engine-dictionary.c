@@ -1,0 +1,4 @@
+18 PRO --> NOTFOUND - comparisons: b196 n22 s22
+783 SWA --> NOTFOUND - comparisons: b184 n22 s22
+230 GRAT --> NOTFOUND - comparisons: b1333 n22 s22
+230 GRAD --> NOTFOUND - comparisons: b1213 n22 s22
